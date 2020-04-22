@@ -7,6 +7,7 @@ class Login extends React.Component {
         creds: {
             username: '',
             password: '',
+            isLoading: false,
         },
     };
 
@@ -14,6 +15,7 @@ class Login extends React.Component {
         this.setState({
             creds: {
                 ...this.state.creds,
+                isLoading: true,
                 [e.target.name]: e.target.value,
             },
         });
@@ -28,6 +30,7 @@ class Login extends React.Component {
                 console.log(this.props.history);
                 localStorage.setItem('token', JSON.stringify(res.data.payload));
                 this.props.history.push('/protected');
+                this.state.creds.isLoading = false;
             })
             .catch((err) => {
                 console.log(err);
@@ -37,6 +40,7 @@ class Login extends React.Component {
     render() {
         return (
             <section>
+                <h4>Please log in:</h4>
                 <form onSubmit={this.login}>
                     <input
                         type="text"
