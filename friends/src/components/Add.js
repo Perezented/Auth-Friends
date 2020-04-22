@@ -21,7 +21,7 @@ class Add extends React.Component {
     };
 
     submitFriend = (e) => {
-        e.preventDefault();
+        // e.preventDefault();  //=======ask tucker!!!!!!!!!!!!!!!!!!!!!!
         authenticAxios()
             .post('/api/friends', this.state.friend)
             .then((res) => {
@@ -29,7 +29,7 @@ class Add extends React.Component {
                 this.setState({
                     friends: res.data,
                 });
-                this.props.history.push('/protected');
+                this.props.history.push('/add');
             })
             .catch((err) => {
                 console.log(err);

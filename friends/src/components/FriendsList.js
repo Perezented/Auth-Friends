@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { authenticAxios } from '../utils/authenticAxios';
+import Add from './Add';
 
 class FriendsList extends React.Component {
     state = {
@@ -27,6 +28,7 @@ class FriendsList extends React.Component {
     render() {
         return (
             <section>
+                <Add />
                 <h1>List of Friends:</h1>
                 {this.state.friends.map((value) => {
                     return (

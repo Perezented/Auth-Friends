@@ -20,9 +20,6 @@ function App() {
                         <li>
                             <Link to="/protected">Friends Home Page</Link>
                         </li>
-                        <li>
-                            <Link to="/add">Add a friend!</Link>
-                        </li>
                     </ul>
                 </header>
                 <Switch>
@@ -32,7 +29,7 @@ function App() {
                         component={FriendsList}
                     />
                     <Route path="/login" component={Login} />
-                    <PrivateRouter exact path="/add" component={Add} />
+                    {/* <PrivateRouter path="/add" component={Add} /> */}
                     <Route component={Login} />
                 </Switch>
             </div>
