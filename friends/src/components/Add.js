@@ -26,6 +26,9 @@ class Add extends React.Component {
             .post('/api/friends', this.state.friend)
             .then((res) => {
                 console.log(res.data);
+                this.setState({
+                    friends: res.data,
+                });
                 this.props.history.push('/protected');
             })
             .catch((err) => {
