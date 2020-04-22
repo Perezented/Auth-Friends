@@ -7,7 +7,6 @@ class Login extends React.Component {
         creds: {
             username: '',
             password: '',
-            isLoading: false,
         },
     };
 
@@ -15,7 +14,6 @@ class Login extends React.Component {
         this.setState({
             creds: {
                 ...this.state.creds,
-                isLoading: true,
                 [e.target.name]: e.target.value,
             },
         });
@@ -24,13 +22,12 @@ class Login extends React.Component {
     login = (e) => {
         e.preventDefault();
         authenticAxios()
-            .post('./api/login', this.state.creds)
+            .post('/api/login', this.state.creds)
             .then((res) => {
-                console.log(res);
-                console.log(this.props.history);
+                // console.log(res);
+                // console.log(this.props.history);
                 localStorage.setItem('token', JSON.stringify(res.data.payload));
                 this.props.history.push('/protected');
-                this.state.creds.isLoading = false;
             })
             .catch((err) => {
                 console.log(err);
@@ -40,20 +37,24 @@ class Login extends React.Component {
     render() {
         return (
             <section>
-                <h4>Please log in:</h4>
+                <h4>Hey there, looks like you need to login:</h4>
                 <form onSubmit={this.login}>
+                    Username:
                     <input
                         type="text"
                         name="username"
                         value={this.state.creds.username}
                         onChange={this.handleChanges}
                     />
+                    <br />
+                    Password:
                     <input
                         type="password"
                         name="password"
                         value={this.state.creds.password}
                         onChange={this.handleChanges}
                     />
+                    <br />
                     <button>Login</button>
                 </form>
             </section>
