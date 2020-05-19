@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import LoadingPage from './components/LoadingPage';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
@@ -23,6 +24,7 @@ function App() {
                     />
                     <Route path="/login" component={Login} />
                     <Route component={Login} />
+                    <Route path="/loadingpage" component={LoadingPage} />
                 </Switch>
             </div>
         </Router>

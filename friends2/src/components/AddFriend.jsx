@@ -20,7 +20,7 @@ const AddFriend = (props) => {
         authenticatedAxios()
             .post('/api/friends', friend)
             .then((res) => {
-                push('/loader');
+                push('/loadingpage');
                 push('/dashboard');
                 console.log(res);
             })
