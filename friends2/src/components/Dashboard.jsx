@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { authenticatedAxios } from '../utils/authenticatedAxios';
+import AddFriend from './AddFriend';
 
 const Dashboard = () => {
     const [friends, setFriends] = useState([]);
@@ -14,7 +15,9 @@ const Dashboard = () => {
     return (
         <section>
             <h1>
-                Welcome to your dashboard <br /> Here's a list of your friends
+                Welcome to your dashboard <br />
+                <AddFriend />
+                <br /> Here's a list of your friends
             </h1>
             {friends.map((value) => {
                 console.log(value);
