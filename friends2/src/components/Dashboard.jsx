@@ -16,9 +16,8 @@ const Dashboard = () => {
         <section>
             <h1>
                 Welcome to your dashboard <br />
-                <AddFriend />
-                <br /> Here's a list of your friends
             </h1>
+            <AddFriend />
             {friends.map((value) => {
                 console.log(value);
                 return (

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { authenticatedAxios } from '../utils/authenticatedAxios';
+import { useHistory } from 'react-router-dom';
 
 const AddFriend = (props) => {
     const [friend, setFriend] = useState();
+    const { push } = useHistory();
 
     const handleChanges = (event) => {
         event.preventDefault();
@@ -14,11 +17,22 @@ const AddFriend = (props) => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(friend);
+        authenticatedAxios()
+            .post('/api/friends', friend)
+            .then((res) => {
+                push('/loader');
+                push('/dashboard');
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+                return err;
+            });
     };
 
     return (
         <section>
+            <h3>Add a friend here: </h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input
